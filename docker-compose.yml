@@ -1,0 +1,93 @@
+version: "3.8"
+
+services:
+  balancer:
+    image: golang:1.21.4-alpine3.18
+    container_name: balancer
+    ports:
+      - "3000:5555"
+    working_dir:
+      /usr/app
+    volumes:
+      - .:/usr/app
+    command:
+      go run cmd/main.go
+    depends_on:
+      - service1
+      - service2
+      - service3
+      - service4
+      - service5
+
+
+  service1:
+    image: golang:1.21.4-alpine3.18
+    container_name: s1
+    ports:
+      - "50051:50051"
+    environment:
+      - SERVER_PORT=50051
+    working_dir:
+      /usr/app
+    volumes:
+      - ./services:/usr/app
+    command:
+      go run main.go
+
+  service2:
+    image: golang:1.21.4-alpine3.18
+    container_name: s2
+    ports:
+      - "50052:50052"
+    environment:
+      - SERVER_PORT=50052
+    working_dir:
+      /usr/app
+    volumes:
+      - ./services:/usr/app
+    command:
+      go run main.go
+
+  service3:
+    image: golang:1.21.4-alpine3.18
+    container_name: s3
+    ports:
+      - "50053:50053"
+    environment:
+      - SERVER_PORT=50053
+    working_dir:
+      /usr/app
+    volumes:
+      - ./services:/usr/app
+    command:
+      go run main.go
+
+  service4:
+    image: golang:1.21.4-alpine3.18
+    container_name: s4
+    ports:
+      - "50054:50054"
+    environment:
+      - SERVER_PORT=50054
+    working_dir:
+      /usr/app
+    volumes:
+      - ./services:/usr/app
+    command:
+      go run main.go
+
+  service5:
+    image: golang:1.21.4-alpine3.18
+    container_name: s5
+    ports:
+      - "50055:50055"
+    environment:
+      - SERVER_PORT=50055
+      - CLOSE_TIMEOUT=15
+    working_dir:
+      /usr/app
+    volumes:
+      - ./services:/usr/app
+    command:
+      go run main.go
+

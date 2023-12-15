@@ -1,0 +1,7 @@
+Port: 5555
+Services:
+  - http://service1:50051
+  - http://service2:50052
+  - http://service3:50053
+  - http://service4:50054
+  - http://service5:50055
