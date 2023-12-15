@@ -1,3 +1,5 @@
 Для запуска 
-sudo make run
-go run clientScript/client.go
+
+```sudo make run```
+
+```go run clientScript/client.go```
